@@ -46,6 +46,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
         <div 
           onClick={onRent}
           className="
+            bg-theme-white
             hidden
             md:block
             text-sm 
@@ -53,12 +54,15 @@ const UserMenu: React.FC<UserMenuProps> = ({
             py-3 
             px-4 
             rounded-full 
-            hover:bg-neutral-100 
+            hover:bg-ternary 
+            hover:text-primary
+            border-[1px]
+            hover:border-primary
             transition 
             cursor-pointer
           "
         >
-          Airbnb your home
+          Register your vehicle
         </div>
         <div 
         onClick={toggleOpen}
@@ -67,7 +71,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
           md:py-1
           md:px-2
           border-[1px] 
-          border-neutral-200 
+          border-primary 
           flex 
           flex-row 
           items-center 
@@ -78,7 +82,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
           transition
           "
         >
-          <AiOutlineMenu />
+          <AiOutlineMenu className="text-theme-white" />
           <div className="hidden md:block">
             <Avatar src={currentUser?.image} />
           </div>
@@ -92,7 +96,8 @@ const UserMenu: React.FC<UserMenuProps> = ({
             shadow-md
             w-[40vw]
             md:w-3/4 
-            bg-white 
+            bg-ternary
+            text-theme-white 
             overflow-hidden 
             right-0 
             top-12 
@@ -119,7 +124,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                   onClick={() => router.push('/properties')}
                 />
                 <MenuItem 
-                  label="Airbnb your home" 
+                  label="Register your vehicle" 
                   onClick={rentModal.onOpen}
                 />
                 <hr />

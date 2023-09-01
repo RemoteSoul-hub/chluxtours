@@ -14,7 +14,7 @@ import {
 } from 'react-icons/gi';
 import { FaSkiing } from 'react-icons/fa';
 import { BsSnow } from 'react-icons/bs';
-import { IoDiamond } from 'react-icons/io5';
+import { IoCar, IoCarSport } from 'react-icons/io5';
 import { MdOutlineVilla } from 'react-icons/md';
 
 import CategoryBox from "../CategoryBox";
@@ -23,81 +23,82 @@ import Container from '../Container';
 
 export const categories = [
   {
-    label: 'Beach',
-    icon: TbBeach,
-    description: 'This property is close to the beach!',
+    label: 'Economy',
+    icon: IoCar,
+    description: 'Affordable and fuel-efficient cars!',
   },
   {
-    label: 'Windmills',
-    icon: GiWindmill,
-    description: 'This property is has windmills!',
+    label: 'Luxury',
+    icon: IoCarSport,
+    description: 'Experience the ultimate in luxury and comfort!',
   },
   {
-    label: 'Modern',
-    icon: MdOutlineVilla,
-    description: 'This property is modern!'
+    label: 'SUV',
+    icon: IoCarSport,
+    description: 'Spacious and versatile SUVs for all your needs!',
   },
   {
-    label: 'Countryside',
-    icon: TbMountain,
-    description: 'This property is in the countryside!'
+    label: 'Convertible',
+    icon: IoCarSport,
+    description: 'Enjoy the wind in your hair with a convertible!',
   },
   {
-    label: 'Pools',
-    icon: TbPool,
-    description: 'This is property has a beautiful pool!'
+    label: 'Electric',
+    icon: IoCarSport,
+    description: 'Environmentally friendly electric vehicles!',
   },
   {
-    label: 'Islands',
-    icon: GiIsland,
-    description: 'This property is on an island!'
+    label: '4x4 Off-Road',
+    icon: IoCarSport,
+    description: 'Explore off-road adventures with our 4x4 vehicles!',
   },
   {
-    label: 'Lake',
-    icon: GiBoatFishing,
-    description: 'This property is near a lake!'
+    label: 'Family',
+    icon: IoCarSport,
+    description: 'Comfortable and spacious cars for families!',
   },
   {
-    label: 'Skiing',
-    icon: FaSkiing,
-    description: 'This property has skiing activies!'
+    label: 'Sports',
+    icon: IoCarSport,
+    description: 'High-performance sports cars for thrill-seekers!',
   },
   {
-    label: 'Castles',
-    icon: GiCastle,
-    description: 'This property is an ancient castle!'
+    label: 'Compact',
+    icon: IoCarSport,
+    description: 'Compact cars perfect for city driving!',
   },
   {
-    label: 'Caves',
-    icon: GiCaveEntrance,
-    description: 'This property is in a spooky cave!'
+    label: 'Vintage',
+    icon: IoCarSport,
+    description: 'Classic and vintage cars for a nostalgic ride!',
   },
   {
-    label: 'Camping',
-    icon: GiForestCamp,
-    description: 'This property offers camping activities!'
+    label: 'Van & Minivan',
+    icon: IoCarSport,
+    description: 'Roomy vans and minivans for group travel!',
   },
   {
-    label: 'Arctic',
-    icon: BsSnow,
-    description: 'This property is in arctic environment!'
+    label: 'Truck & Pickup',
+    icon: IoCarSport,
+    description: 'Heavy-duty trucks and pickups for your hauling needs!',
   },
   {
-    label: 'Desert',
-    icon: GiCactus,
-    description: 'This property is in the desert!'
+    label: 'Airport Shuttle',
+    icon: IoCarSport,
+    description: 'Convenient airport shuttle services!',
   },
   {
-    label: 'Barns',
-    icon: GiBarn,
-    description: 'This property is in a barn!'
+    label: 'Camper & RV',
+    icon: IoCarSport,
+    description: 'Explore the open road with our camper and RV rentals!',
   },
   {
-    label: 'Lux',
-    icon: IoDiamond,
-    description: 'This property is brand new and luxurious!'
+    label: 'Premium',
+    icon: IoCarSport,
+    description: 'High-end premium cars for a first-class experience!',
   }
 ]
+
 
 const Categories = () => {
   const params = useSearchParams();

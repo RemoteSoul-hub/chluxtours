@@ -13,8 +13,8 @@ import ClientOnly from './components/ClientOnly';
 import getCurrentUser from './actions/getCurrentUser';
 
 export const metadata = {
-  title: 'Airbnb',
-  description: 'Airbnb Clone',
+  title: 'CH Luxtours',
+  description: 'Chluxtours - Réservation de véhicules',
 }
 
 const font = Nunito({ 

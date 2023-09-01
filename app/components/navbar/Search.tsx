@@ -55,6 +55,7 @@ const Search = () => {
       onClick={searchModal.onOpen}
       className="
         border-[1px] 
+        border-primary
         w-full 
         md:w-auto 
         py-2 
@@ -63,6 +64,7 @@ const Search = () => {
         hover:shadow-md 
         transition 
         cursor-pointer
+        text-theme-white
       "
     >
       <div 
@@ -101,7 +103,7 @@ const Search = () => {
             text-sm 
             pl-6 
             pr-2 
-            text-gray-600 
+            text-primary 
             flex 
             flex-row 
             items-center 
@@ -112,9 +114,9 @@ const Search = () => {
           <div 
             className="
               p-2 
-              bg-rose-500 
+              bg-theme-white 
               rounded-full 
-              text-white
+              text-ternary
             "
           >
             <BiSearch size={18} />
