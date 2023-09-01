@@ -51,9 +51,9 @@ const RentModal = () => {
     defaultValues: {
       category: '',
       location: null,
-      guestCount: 1,
-      roomCount: 1,
-      bathroomCount: 1,
+     // guestCount: 1,
+    // roomCount: 1,
+     // bathroomCount: 1,
       imageSrc: '',
       price: 1,
       title: '',
@@ -61,11 +61,11 @@ const RentModal = () => {
     }
   });
 
-  const location = watch('location');
+ const location = watch('location');
   const category = watch('category');
-  const guestCount = watch('guestCount');
-  const roomCount = watch('roomCount');
-  const bathroomCount = watch('bathroomCount');
+ // const guestCount = watch('guestCount');
+ // const roomCount = watch('roomCount');
+  //const bathroomCount = watch('bathroomCount');
   const imageSrc = watch('imageSrc');
 
   const Map = useMemo(() => dynamic(() => import('../Map'), { 
