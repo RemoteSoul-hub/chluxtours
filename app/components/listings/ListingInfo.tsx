@@ -16,7 +16,7 @@ const Map = dynamic(() => import('../Map'), {
 interface ListingInfoProps {
   user: SafeUser,
   description: string;
-  roomCount: number;
+  carModel: string;
   category: {
     icon: IconType,
     label: string;
@@ -28,7 +28,7 @@ interface ListingInfoProps {
 const ListingInfo: React.FC<ListingInfoProps> = ({
   user,
   description,
-  roomCount,
+  carModel,
   category,
   carValue,
 }) => {
@@ -63,7 +63,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
         >
           
           <div>
-            {roomCount} rooms
+            {carModel} cars
           </div>
         </div>
       </div>

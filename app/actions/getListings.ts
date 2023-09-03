@@ -2,7 +2,7 @@ import prisma from "@/app/libs/prismadb";
 
 export interface IListingsParams {
   userId?: string;
-  carModel?: number;
+  carModel?: string;
   startDate?: string;
   endDate?: string;
   carValue?: string;
@@ -33,9 +33,7 @@ export default async function getListings(
     }
 
     if (carModel) {
-      query.carModel = {
-        gte: +carModel
-      }
+      query.carModel = carModel;
     }
 
     if (carValue) {
