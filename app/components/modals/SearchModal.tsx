@@ -31,9 +31,7 @@ const SearchModal = () => {
   const [step, setStep] = useState(STEPS.LOCATION);
 
   const [location, setLocation] = useState<CountrySelectValue>();
-  const [guestCount, setGuestCount] = useState(1);
-  const [roomCount, setRoomCount] = useState(1);
-  const [bathroomCount, setBathroomCount] = useState(1);
+  const [carModel, setcarModel] = useState(1);
   const [dateRange, setDateRange] = useState<Range>({
     startDate: new Date(),
     endDate: new Date(),
@@ -66,9 +64,7 @@ const SearchModal = () => {
     const updatedQuery: any = {
       ...currentQuery,
       locationValue: location?.value,
-      guestCount,
-      roomCount,
-      bathroomCount
+      carModel,
     };
 
     if (dateRange.startDate) {
@@ -93,11 +89,9 @@ const SearchModal = () => {
     searchModal, 
     location, 
     router, 
-    guestCount, 
-    roomCount,
+    carModel,
     dateRange,
     onNext,
-    bathroomCount,
     params
   ]);
 
@@ -156,27 +150,11 @@ const SearchModal = () => {
           subtitle="Find your perfect place!"
         />
         <Counter 
-          onChange={(value) => setGuestCount(value)}
-          value={guestCount}
-          title="Guests" 
-          subtitle="How many guests are coming?"
-        />
-        <hr />
-        <Counter 
-          onChange={(value) => setRoomCount(value)}
-          value={roomCount}
+          onChange={(value) => setcarModel(value)}
+          value={carModel}
           title="Rooms" 
           subtitle="How many rooms do you need?"
         />        
-        <hr />
-        <Counter 
-          onChange={(value) => {
-            setBathroomCount(value)
-          }}
-          value={bathroomCount}
-          title="Bathrooms"
-          subtitle="How many bahtrooms do you need?"
-        />
       </div>
     )
   }

@@ -16,29 +16,25 @@ const Map = dynamic(() => import('../Map'), {
 interface ListingInfoProps {
   user: SafeUser,
   description: string;
-  guestCount: number;
   roomCount: number;
-  bathroomCount: number;
   category: {
     icon: IconType,
     label: string;
     description: string;
   } | undefined
-  locationValue: string;
+  carValue: string;
 }
 
 const ListingInfo: React.FC<ListingInfoProps> = ({
   user,
   description,
-  guestCount,
   roomCount,
-  bathroomCount,
   category,
-  locationValue,
+  carValue,
 }) => {
   const { getByValue } = useCountries();
 
-  const coordinates = getByValue(locationValue)?.latlng
+  const coordinates = getByValue(carValue)?.latlng
 
   return ( 
     <div className="col-span-4 flex flex-col gap-8">
@@ -65,14 +61,9 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
             text-neutral-500
           "
         >
-          <div>
-            {guestCount} guests
-          </div>
+          
           <div>
             {roomCount} rooms
-          </div>
-          <div>
-            {bathroomCount} bathrooms
           </div>
         </div>
       </div>

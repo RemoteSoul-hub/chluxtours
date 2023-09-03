@@ -65,7 +65,6 @@ model Reservation {
   listingId String @db.ObjectId  
   startDate DateTime
   startLocation String
-  endLocation String
   endDate DateTime
   totalPrice Int
   createdAt DateTime @default(now())
