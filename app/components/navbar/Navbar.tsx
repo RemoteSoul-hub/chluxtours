@@ -1,3 +1,5 @@
+"use client";
+import React, { useState, useEffect } from 'react';
 import { SafeUser } from "@/app/types";
 
 import Categories from "./Categories";
@@ -13,6 +15,24 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({
   currentUser,
 }) => {
+  const [showCategories, setShowCategories] = useState(true);
+  const [lastScrollPosition, setLastScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPosition = window.pageYOffset;
+
+      // Show Categories when scrolling up or at the top of the page
+      setShowCategories(currentScrollPosition < 150);
+
+      setLastScrollPosition(currentScrollPosition);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollPosition]);
   return ( 
     <div className="fixed w-full bg-ternary z-10 shadow-sm">
       <div
@@ -39,7 +59,9 @@ const Navbar: React.FC<NavbarProps> = ({
         </div>
       </Container>
     </div>
-    <Categories />
+    <div className={`slide-up-down ${!showCategories ? 'hidden' : ''}`}>
+        <Categories />
+      </div>
   </div>
   );
 }

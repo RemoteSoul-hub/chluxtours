@@ -1,21 +1,9 @@
 'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { TbBeach, TbMountain, TbPool } from 'react-icons/tb';
-import { 
-  GiBarn, 
-  GiBoatFishing, 
-  GiCactus, 
-  GiCastle, 
-  GiCaveEntrance, 
-  GiForestCamp, 
-  GiIsland,
-  GiWindmill
-} from 'react-icons/gi';
-import { FaSkiing } from 'react-icons/fa';
-import { BsSnow } from 'react-icons/bs';
-import { IoCar, IoCarSport } from 'react-icons/io5';
-import { MdOutlineVilla } from 'react-icons/md';
+
+import { IoCar, IoCarSport, IoCarOutline, IoCarSharp } from 'react-icons/io5';
+import { MdElectricCar } from 'react-icons/md';
 
 import CategoryBox from "../CategoryBox";
 import Container from '../Container';
@@ -23,80 +11,40 @@ import Container from '../Container';
 
 export const categories = [
   {
-    label: 'Economy',
+    label: 'Sedan',
     icon: IoCar,
-    description: 'Affordable and fuel-efficient cars!',
-  },
-  {
-    label: 'Luxury',
-    icon: IoCarSport,
-    description: 'Experience the ultimate in luxury and comfort!',
+    description: 'Classic comfort and efficiency',
   },
   {
     label: 'SUV',
     icon: IoCarSport,
-    description: 'Spacious and versatile SUVs for all your needs!',
+    description: 'Roomy and versatile',
   },
   {
     label: 'Convertible',
-    icon: IoCarSport,
-    description: 'Enjoy the wind in your hair with a convertible!',
-  },
-  {
-    label: 'Electric',
-    icon: IoCarSport,
-    description: 'Environmentally friendly electric vehicles!',
-  },
-  {
-    label: '4x4 Off-Road',
-    icon: IoCarSport,
-    description: 'Explore off-road adventures with our 4x4 vehicles!',
-  },
-  {
-    label: 'Family',
-    icon: IoCarSport,
-    description: 'Comfortable and spacious cars for families!',
+    icon: IoCarOutline,
+    description: 'Enjoy open-air driving',
   },
   {
     label: 'Sports',
-    icon: IoCarSport,
-    description: 'High-performance sports cars for thrill-seekers!',
+    icon: IoCarSharp,
+    description: 'High performance and style',
   },
   {
-    label: 'Compact',
-    icon: IoCarSport,
-    description: 'Compact cars perfect for city driving!',
+    label: 'Electric',
+    icon: MdElectricCar,
+    description: 'Eco-friendly and efficient',
   },
   {
-    label: 'Vintage',
-    icon: IoCarSport,
-    description: 'Classic and vintage cars for a nostalgic ride!',
+    label: 'Hybrid',
+    icon: IoCar,
+    description: 'Best of both worlds',
   },
   {
-    label: 'Van & Minivan',
+    label: 'Minivan',
     icon: IoCarSport,
-    description: 'Roomy vans and minivans for group travel!',
+    description: 'Family-friendly and spacious',
   },
-  {
-    label: 'Truck & Pickup',
-    icon: IoCarSport,
-    description: 'Heavy-duty trucks and pickups for your hauling needs!',
-  },
-  {
-    label: 'Airport Shuttle',
-    icon: IoCarSport,
-    description: 'Convenient airport shuttle services!',
-  },
-  {
-    label: 'Camper & RV',
-    icon: IoCarSport,
-    description: 'Explore the open road with our camper and RV rentals!',
-  },
-  {
-    label: 'Premium',
-    icon: IoCarSport,
-    description: 'High-end premium cars for a first-class experience!',
-  }
 ]
 
 
@@ -114,7 +62,6 @@ const Categories = () => {
     <Container>
       <div
         className="
-          pt-4
           flex 
           flex-row 
           items-center 

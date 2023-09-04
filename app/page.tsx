@@ -7,6 +7,8 @@ import getListings, {
 } from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
+import FourCols from "./components/FourCols";
+import UsageTimeline from "./components/UsageTimeline";
 
 interface HomeProps {
   searchParams: IListingsParams
@@ -16,18 +18,21 @@ const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
-  if (listings.length === 0) {
-    return (
-      <ClientOnly>
-        <EmptyState showReset />
-      </ClientOnly>
-    );
-  }
+  // if (listings.length === 0) {
+  //   return (
+  //     <ClientOnly>
+  //       <EmptyState showReset />
+  //     </ClientOnly>
+  //   );
+  // }
 
   return (
     <ClientOnly>
-      <Container>
-        <div 
+      <Container className="gap-y-5 lg:gap-y-10">
+        <FourCols />
+        <UsageTimeline />
+
+        {/* <div 
           className="
             pt-24
             grid 
@@ -47,7 +52,7 @@ const Home = async ({ searchParams }: HomeProps) => {
               data={listing}
             />
           ))}
-        </div>
+        </div> */}
       </Container>
     </ClientOnly>
   )
