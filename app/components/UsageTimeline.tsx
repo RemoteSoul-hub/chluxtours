@@ -17,7 +17,7 @@ const UsageTimeline = () => {
         <div className="flex flex-col lg:flex-row justify-center items-center pb-20 lg:pb-12">
           <div className='relative flex flex-col md:flex-row items-center mb-12 flex-1'>
              <Image src={'/images/timeline-item.png'} alt="" width={616} height={408} />
-             <div className='text-8xl text-primary transform -translate-x-12 bg-[#0d0d0d] rounded-full p-3 lg:block hidden'>
+             <div className='text-8xl text-primary transform -translate-x-12 bg-[#0d0d0d] rounded-full p-3 xl:block hidden'>
                 <BsClockHistory/>
              </div>
           </div>
@@ -34,7 +34,7 @@ const UsageTimeline = () => {
         <div className="flex flex-col lg:flex-row-reverse justify-center items-center pb-20 lg:pb-12">
           <div className='relative flex flex-col md:flex-row items-center mb-12 flex-1'>
              <Image src={'/images/timeline-item.png'} alt="" width={616} height={408} />
-             <div className='text-8xl text-primary transform -translate-x-12 bg-[#0d0d0d] rounded-full p-3 lg:block hidden'>
+             <div className='text-8xl text-primary transform translate-x-12 bg-[#0d0d0d] rounded-full p-3 xl:block hidden'>
                 <BsClockHistory/>
              </div>
           </div>
@@ -51,7 +51,7 @@ const UsageTimeline = () => {
         <div className="flex flex-col lg:flex-row justify-center items-center pb-20 lg:pb-12">
           <div className='relative flex flex-col md:flex-row items-center mb-12 flex-1'>
              <Image src={'/images/timeline-item.png'} alt="" width={616} height={408} />
-             <div className='text-8xl text-primary transform -translate-x-12 bg-[#0d0d0d] rounded-full p-3 lg:block hidden'>
+             <div className='text-8xl text-primary transform -translate-x-12 bg-[#0d0d0d] rounded-full p-3 xl:block hidden'>
                 <BsClockHistory/>
              </div>
           </div>
