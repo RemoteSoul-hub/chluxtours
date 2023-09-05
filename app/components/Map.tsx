@@ -1,45 +1,54 @@
-'use client';
-
+import React, { useEffect, useState } from 'react';
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
-import { MapContainer, Marker, TileLayer } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css';
 
-import 'leaflet/dist/leaflet.css'
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+// Configure your Google Maps API key as an environment variable
+const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
-// @ts-ignore
-delete L.Icon.Default.prototype._getIconUrl; 
-L.Icon.Default.mergeOptions({
-    iconUrl: markerIcon.src,
-    iconRetinaUrl: markerIcon2x.src,
-    shadowUrl: markerShadow.src,
-});
+const url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const attribution =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 interface MapProps {
-  center?: number[]
+  center?: number[];
 }
-
-const url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 const Map: React.FC<MapProps> = ({ center }) => {
-  return (
-      <MapContainer 
-        center={center as L.LatLngExpression || [51, -0.09]} 
-        zoom={center ? 4 : 2} 
-        scrollWheelZoom={false} 
-        className="h-[35vh] rounded-lg"
-      >
-        <TileLayer
-          url={url}
-          attribution={attribution}
-        />
-        {center && (
-          <Marker position={center as L.LatLngExpression} />
-        )}
-      </MapContainer>
-  )
-}
+  const [isGoogleMapsLoaded, setGoogleMapsLoaded] = useState(false);
 
-export default Map
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places`;
+    script.async = true;
+    script.onload = () => setGoogleMapsLoaded(true);
+
+    document.body.appendChild(script);
+
+    return () => {
+      // Clean up the script element when the component unmounts
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  return (
+    <div>
+      {isGoogleMapsLoaded ? (
+        <MapContainer
+          center={center as L.LatLngExpression || [51, -0.09]}
+          zoom={center ? 4 : 2}
+          scrollWheelZoom={false}
+          className="h-[35vh] rounded-lg"
+        >
+          <TileLayer url={url} attribution={attribution} />
+          {center && <Marker position={center as L.LatLngExpression} />}
+        </MapContainer>
+      ) : (
+        // You can display a loading indicator or message while the script is loading
+        <div>Loading Google Maps...</div>
+      )}
+    </div>
+  );
+};
+
+export default Map;

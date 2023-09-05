@@ -7,6 +7,11 @@ export interface IListingsParams {
   endDate?: string;
   carValue?: string;
   category?: string;
+  carBrand?: string;
+  year?: number;
+  color?: string;
+  seats?: number;
+
 }
 
 export default async function getListings(
@@ -20,6 +25,10 @@ export default async function getListings(
       startDate,
       endDate,
       category,
+      carBrand,
+      year,
+      color,
+      seats,
     } = params;
 
     let query: any = {};
@@ -39,6 +48,19 @@ export default async function getListings(
     if (carValue) {
       query.carValue = carValue;
     }
+    if (carBrand) {
+      query.carBrand = carBrand;
+    }
+    if (year) {
+      query.year = year;
+    }
+    if (color) {
+      query.color = color;
+    }
+    if (seats) {
+      query.seats = seats;
+    }
+
 
     if (startDate && endDate) {
       query.NOT = {

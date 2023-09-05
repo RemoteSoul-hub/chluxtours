@@ -1,7 +1,12 @@
 'use client';
 
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 import qs from 'query-string';
 import dynamic from 'next/dynamic'
+import Script from 'next/script'
 import { useCallback, useMemo, useState } from "react";
 import { Range } from 'react-date-range';
 import { formatISO } from 'date-fns';
@@ -12,6 +17,8 @@ import useSearchModal from "@/app/hooks/useSearchModal";
 import Modal from "./Modal";
 import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
+import React, { Component } from 'react';
+import Select from 'react-select';
 import CountrySelect, { 
   CountrySelectValue
 } from "../inputs/CountrySelect";
@@ -31,7 +38,8 @@ const SearchModal = () => {
   const [step, setStep] = useState(STEPS.LOCATION);
 
   const [location, setLocation] = useState<CountrySelectValue>();
-  const [carModel, setcarModel] = useState(1);
+  const [seats, setcarSeats] = useState(1);
+  const [carBrand, setcarBrand] = useState('');
   const [dateRange, setDateRange] = useState<Range>({
     startDate: new Date(),
     endDate: new Date(),
@@ -64,7 +72,7 @@ const SearchModal = () => {
     const updatedQuery: any = {
       ...currentQuery,
       locationValue: location?.value,
-      carModel,
+      seats,
     };
 
     if (dateRange.startDate) {
@@ -89,7 +97,7 @@ const SearchModal = () => {
     searchModal, 
     location, 
     router, 
-    carModel,
+    seats,
     dateRange,
     onNext,
     params
@@ -112,11 +120,13 @@ const SearchModal = () => {
   }, [step]);
 
   let bodyContent = (
+    
     <div className="flex flex-col gap-8">
       <Heading
         title="Where do you wanna go?"
         subtitle="Find the perfect location!"
       />
+      
       <CountrySelect 
         value={location} 
         onChange={(value) => 
@@ -149,17 +159,22 @@ const SearchModal = () => {
           title="More information"
           subtitle="Find your perfect place!"
         />
-        <Counter 
-          onChange={(value) => setcarModel(value)}
-          value={carModel}
-          title="Rooms" 
-          subtitle="How many rooms do you need?"
-        />        
+        <Counter
+          onChange={(value) => setcarSeats(value)}
+          value={seats}
+          title="Seats"
+          subtitle="how many seats would you like to have ?"
+        />
+        
       </div>
     )
   }
-
-  return (
+  return (<>
+    <div>
+      <Script
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`}
+      />
+    </div>
     <Modal
       isOpen={searchModal.isOpen}
       title="Filters"
@@ -169,7 +184,7 @@ const SearchModal = () => {
       secondaryAction={step === STEPS.LOCATION ? undefined : onBack}
       onClose={searchModal.onClose}
       body={bodyContent}
-    />
+    /></>
   );
 }
 
