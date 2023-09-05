@@ -59,9 +59,9 @@ const Navbar: React.FC<NavbarProps> = ({
         </div>
       </Container>
     </div>
-    <div className={`slide-up-down ${!showCategories ? 'hidden' : ''}`}>
+    {/* <div className={`slide-up-down ${!showCategories ? 'hidden' : ''}`}> */}
         <Categories />
-      </div>
+      {/* </div> */}
   </div>
   );
 }
