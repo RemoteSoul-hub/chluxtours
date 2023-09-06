@@ -30,6 +30,7 @@ const Map: React.FC<MapProps> = ({ center }) => {
       document.body.removeChild(script);
     };
   }, []);
+  
 
   return (
     <div>

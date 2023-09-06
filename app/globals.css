@@ -23,3 +23,13 @@ body,
   font-size: 16px !important;
   width: 100% !important;
 }
+.location-search-input {
+  width: 100%;
+  padding: 10px;
+}
+.autocomplete-dropdown-container {
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  border: 1px solid #ccc;
+}

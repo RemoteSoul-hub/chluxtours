@@ -1,13 +1,8 @@
 'use client';
+
+import Select from 'react-select'
+
 import useCountries from '@/app/hooks/useCountries';
-import React, { useState } from 'react';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
-import Select from 'react-select';
-
-
 
 export type CountrySelectValue = {
   flag: string;
@@ -21,61 +16,50 @@ interface CountrySelectProps {
   value?: CountrySelectValue;
   onChange: (value: CountrySelectValue) => void;
 }
+
 const CountrySelect: React.FC<CountrySelectProps> = ({
   value,
-  onChange,
+  onChange
 }) => {
-  const [address, setAddress] = useState('');
+  const { getAll } = useCountries();
 
-  const handleSelect = async (selectedAddress: string) => {
-    try {
-      const results = await geocodeByAddress(selectedAddress);
-      const latLng = await getLatLng(results[0]);
-      const selectedCountry = {
-        flag: '', // You can fetch the flag based on the country code if needed
-        label: selectedAddress,
-        latlng: [latLng.lat, latLng.lng],
-        region: '', // You can fetch the region if needed
-        value: selectedAddress,
-      };
-      onChange(selectedCountry);
-      setAddress(selectedAddress);
-    } catch (error) {
-      console.error('Error selecting country:', error);
-    }
-  };
-
-  return (
+  return ( 
     <div>
-      <PlacesAutocomplete
-        value={address}
-        onChange={(newAddress) => setAddress(newAddress)}
-        onSelect={handleSelect}
-      >
-        {({ getInputProps, suggestions, getSuggestionItemProps }) => (
-          <div>
-            <input
-              {...getInputProps({
-                placeholder: 'Anywhere',
-                className: 'text-lg p-3 border-2',
-              })}
-            />
-            <div className="suggestions-container">
-             {suggestions.map((suggestion) => (
-              <div
-                {...getSuggestionItemProps(suggestion)}
-                 key={suggestion.id}
-                 className="suggestion-item text-lg"
-               >
-              {suggestion.description}
-            </div>
-                      ))}
+      <Select
+        placeholder="Anywhere"
+        isClearable
+        options={getAll()}
+        value={value}
+        onChange={(value) => onChange(value as CountrySelectValue)}
+        formatOptionLabel={(option: any) => (
+          <div className="
+          flex flex-row items-center gap-3">
+            <div>{option.flag}</div>
+            <div>
+              {option.label},
+              <span className="text-neutral-500 ml-1">
+                {option.region}
+              </span>
             </div>
           </div>
         )}
-      </PlacesAutocomplete>
+        classNames={{
+          control: () => 'p-3 border-2',
+          input: () => 'text-lg',
+          option: () => 'text-lg'
+        }}
+        theme={(theme) => ({
+          ...theme,
+          borderRadius: 6,
+          colors: {
+            ...theme.colors,
+            primary: 'black',
+            primary25: '#FCE9C5'
+          }
+        })}
+      />
     </div>
-  );
-};
-
+   );
+}
+ 
 export default CountrySelect;

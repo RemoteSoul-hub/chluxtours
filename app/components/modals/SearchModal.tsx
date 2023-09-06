@@ -1,9 +1,5 @@
 'use client';
-
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import Autocomplete from "react-google-autocomplete";
 import qs from 'query-string';
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
@@ -23,6 +19,11 @@ import CountrySelect, {
   CountrySelectValue
 } from "../inputs/CountrySelect";
 import Heading from '../Heading';
+import { useLoadScript } from '@react-google-maps/api';
+import YourComponent from "../inputs/googleplaces";
+
+
+
 
 enum STEPS {
   LOCATION = 0,
@@ -38,6 +39,9 @@ const SearchModal = () => {
   const [step, setStep] = useState(STEPS.LOCATION);
 
   const [location, setLocation] = useState<CountrySelectValue>();
+  const handleLocationChange = (newValue) => {
+    setLocation(newValue as CountrySelectValue); // Update the location state
+  };
   const [seats, setcarSeats] = useState(1);
   const [carBrand, setcarBrand] = useState('');
   const [dateRange, setDateRange] = useState<Range>({
@@ -127,11 +131,9 @@ const SearchModal = () => {
         subtitle="Find the perfect location!"
       />
       
-      <CountrySelect 
-        value={location} 
-        onChange={(value) => 
-          setLocation(value as CountrySelectValue)} 
-      />
+      <YourComponent
+      loc={location?.value}
+/>
       <hr />
       <Map center={location?.latlng} />
     </div>
@@ -172,8 +174,8 @@ const SearchModal = () => {
   return (<>
     <div>
       <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`}
-      />
+       src={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places&callback=initMap`}></Script>
+
     </div>
     <Modal
       isOpen={searchModal.isOpen}
