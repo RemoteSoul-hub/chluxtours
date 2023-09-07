@@ -15,11 +15,19 @@ export async function POST(
   const body = await request.json();
   const { 
     title,
-    description,
-    imageSrc,
-    category,
-    carModel,
-    location,
+      description,
+      imageSrc,
+      category,
+      carBrand,
+      carModel,
+      transmission,
+      fuelType,
+      seats,
+      year,
+      color,
+      doors,
+      startDate,
+      endDate,
     price,
    } = body;
 
@@ -35,8 +43,16 @@ export async function POST(
       description,
       imageSrc,
       category,
+      carBrand,
       carModel,
-      locationValue: location.value,
+      transmission,
+      fuelType,
+      seats,
+      year,
+      color,
+      doors,
+      startDate,
+      endDate,
       price: parseInt(price, 10),
       userId: currentUser.id
     }

@@ -11,7 +11,7 @@ import ToasterProvider from '@/app/providers/ToasterProvider';
 import '../globals.css'
 import ClientOnly from '../components/ClientOnly';
 import getCurrentUser from '../actions/getCurrentUser';
-import Banner from '../components/Banner';
+// import Banner from './components/Banner';
 import Footer from '../components/footer/Footer'
 
 export const metadata = {

@@ -52,13 +52,35 @@ model Listing {
   imageSrc String
   createdAt DateTime @default(now())
   category  String
+  carBrand String
   carModel String
+  year Int
+  color String
+  transmission  Transmission
+  fuelType Fueltype
+  seats Int
+  doors Int
   userId String @db.ObjectId
   price Int
+  startDate DateTime
+  endDate DateTime
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
 }
+
+enum Transmission { 
+  Automatic 
+  Manual
+}
+
+enum Fueltype {
+  Petrol
+  Diesel
+  Electric
+  Hybrid
+}
+
 
 model Reservation {
   id String @id @default(auto()) @map("_id") @db.ObjectId
